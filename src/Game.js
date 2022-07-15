@@ -25,6 +25,7 @@ class Game {
     // в единую структуру данных
     this.track = (new Array(this.trackLength)).fill(' ');
     this.track[this.hero.position] = this.hero.skin;
+    this.track[this.enemy.position] = this.enemy.skin;
   }
 
   check() {
@@ -39,7 +40,7 @@ class Game {
       this.check();
       this.regenerateTrack();
       this.view.render(this.track);
-    });
+    }, 400);
   }
 }
 
