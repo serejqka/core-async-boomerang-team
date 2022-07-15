@@ -15,7 +15,7 @@ class Hero {
 
   moveRight() {
     // Идём вправо.
-    if(this.position !== trackLength.length - 1){
+    if(this.position <= 30){
     this.position += 1;}
   }
 
