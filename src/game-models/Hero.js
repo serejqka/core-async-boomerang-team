@@ -21,7 +21,14 @@ class Hero {
 
   attack() {
     // Атакуем.
-    this.boomerang.fly(this.position);
+    this.boomerang.position = this.position + 1
+    const timerId = setInterval(() => {
+      this.boomerang.fly();
+      if (this.boomerang.position === this.position) {
+        clearInterval(timerId);
+        this.boomerang.position = null;
+      }
+    }, 100);
   }
 
   die() {

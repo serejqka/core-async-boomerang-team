@@ -36,7 +36,8 @@ class Game {
   }
 
   checkEnemy() {
-    if (this.hero.boomerang.position === this.enemy.position) {
+    if (this.hero.boomerang.position >= this.enemy.position - 2) {
+      this.hero.boomerang.hitEnemy = true;
       this.enemy.die();
     } else {
       this.enemy.moveLeft();
