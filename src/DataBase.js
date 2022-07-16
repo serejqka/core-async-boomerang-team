@@ -1,4 +1,4 @@
-// const { sequelize } = require('../db/models');
+const { sequelize } = require('../db/models');
 
 // async function testConnection(){
 //     try {
@@ -12,3 +12,12 @@
 
 // testConnection()
 
+let user = 'Emma'
+
+async function showUser(name){
+    try {
+        
+    } catch (error) {
+
+    }
+}
