@@ -2,13 +2,17 @@
 
 class View {
   render(track) {
-    const yourTeamName = 'Elbrus';
-
     // Тут всё рисуем.
     console.clear();
+    console.log("           БАГА-БОРЕЦ");
+    console.log('\n');
+    console.log('=================================');
+    console.log('\n');
     console.log(track.join(''));
-    console.log('\n\n');
-    console.log(`Created by "${yourTeamName}" with love`);
+    console.log('\n');
+    console.log('=================================');
+    console.log('\n');
+    console.log(`Created by Depressiv_Games with love`);
   }
 }
 
