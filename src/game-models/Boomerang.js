@@ -6,25 +6,15 @@ class Boomerang {
   constructor() {
     this.skin = '🌀';
     this.position;
+    this.hitEnemy = false;
   }
 
-  fly(heroPos) {
-    this.position = heroPos + 1;
-    const timerId = setInterval(() => {
-      if (this.position !== 29){
-        this.moveRight();
-      } else {
-        clearInterval(timerId);
-        const secondTimerId = setInterval(() => {
-          if (this.position !== heroPos + 1){
-            this.moveLeft();
-          } else {
-            clearInterval(secondTimerId);
-            this.position = null;
-          }
-        }, 100);
-      }
-    }, 100);
+  fly() {
+    if (!this.hitEnemy) {
+      this.moveRight();
+    } else {
+      this.moveLeft();
+    }
   }
 
   moveLeft() {
