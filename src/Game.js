@@ -29,10 +29,15 @@ class Game {
     this.track[this.hero.boomerang.position] = this.hero.boomerang.skin;
   }
 
-
   check() {
     if (this.hero.position === this.enemy.position) {
       this.hero.die();
+    }
+  }
+
+  checkEnemy() {
+    if (this.hero.boomerang.position === this.enemy.position) {
+      this.enemy.die();
     }
   }
 
@@ -41,9 +46,10 @@ class Game {
     setInterval(() => {
       // Let's play!
       this.check();
+      this.checkEnemy();
       this.regenerateTrack();
       this.view.render(this.track);
-    }, 400);
+    }, 200);
   }
 }
 
