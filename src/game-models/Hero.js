@@ -2,7 +2,7 @@
 
 class Hero {
   constructor({ position, boomerang }) {
-    this.skin = '🤠'; // можете использовать любые emoji '💃'
+    this.skin = '🤓'; // можете использовать любые emoji '💃'
     this.position = position;
     this.boomerang = boomerang;
   }
@@ -24,17 +24,16 @@ class Hero {
     this.boomerang.position = this.position + 1
     const timerId = setInterval(() => {
       this.boomerang.fly();
-      if (this.boomerang.position === this.position) {
+      if (this.boomerang.position <= this.position) {
         clearInterval(timerId);
         this.boomerang.position = null;
+        this.boomerang.hitEnemy = false;
       }
-    }, 100);
+    }, 80);
   }
 
   die() {
-    this.skin = '💀';
-    console.log('YOU ARE DEAD!💀');
-    process.exit();
+    this.skin = '😫';
   }
 }
 
