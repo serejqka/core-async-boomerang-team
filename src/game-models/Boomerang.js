@@ -5,14 +5,26 @@
 class Boomerang {
   constructor() {
     this.skin = '🌀';
-    this.position = 0;
+    this.position;
   }
 
   fly(heroPos) {
     this.position = heroPos + 1;
-    if
-    this.moveRight();
-    this.moveLeft();
+    const timerId = setInterval(() => {
+      if (this.position !== 29){
+        this.moveRight();
+      } else {
+        clearInterval(timerId);
+        const secondTimerId = setInterval(() => {
+          if (this.position !== heroPos + 1){
+            this.moveLeft();
+          } else {
+            clearInterval(secondTimerId);
+            this.position = null;
+          }
+        }, 100);
+      }
+    }, 100);
   }
 
   moveLeft() {
