@@ -6,14 +6,25 @@ const Enemy = require('./game-models/Enemy');
 const Boomerang = require('./game-models/Boomerang');
 const View = require('./View');
 const controlHero = require('./keyboard')
+const { userName } = require('./DataBase')
+// const {
+//   sequelize,
+//   User
+// } = require('../db/models');
+
 
 // Основной класс игры.
 // Тут будут все настройки, проверки, запуск.
 
 class Game {
-  constructor({ trackLength }) {
+  constructor({
+    trackLength
+  }) {
     this.trackLength = trackLength;
-    this.hero = new Hero({position: 0, boomerang: new Boomerang()}); // Герою можно аргументом передать бумеранг.
+    this.hero = new Hero({
+      position: 0,
+      boomerang: new Boomerang()
+    }); // Герою можно аргументом передать бумеранг.
     this.enemy = new Enemy();
     this.view = new View();
     this.track = [];
@@ -30,13 +41,12 @@ class Game {
     this.track[this.hero.boomerang.position] = this.hero.boomerang.skin;
   }
 
-  check() {
+  check(name) {
     if (this.enemy.position === this.hero.position + 1) {
       this.hero.die();
       this.regenerateTrack();
       this.view.render(this.track);
-      console.log(`ТЫ СЛОВИЛ БАГ!\nУСТРАНЕНО БАГОВ: ${this.score}`);
-      process.exit();
+      userName(name, this.score)
     }
   }
 
@@ -51,11 +61,11 @@ class Game {
     }
   }
 
-  play() {
+  play(name) {
     controlHero(this.hero)
     setInterval(() => {
       // Let's play!
-      this.check();
+      this.check(name);
       this.checkEnemy();
       this.regenerateTrack();
       this.view.render(this.track);
