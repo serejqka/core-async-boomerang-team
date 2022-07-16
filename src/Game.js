@@ -17,6 +17,7 @@ class Game {
     this.enemy = new Enemy();
     this.view = new View();
     this.track = [];
+    this.score = 0;
     this.regenerateTrack();
   }
 
@@ -30,8 +31,12 @@ class Game {
   }
 
   check() {
-    if (this.hero.position === this.enemy.position) {
+    if (this.enemy.position === this.hero.position + 1) {
       this.hero.die();
+      this.regenerateTrack();
+      this.view.render(this.track);
+      console.log(`ТЫ СЛОВИЛ БАГ!\nУСТРАНЕНО БАГОВ: ${this.score}`);
+      process.exit();
     }
   }
 
@@ -39,6 +44,7 @@ class Game {
     if (this.hero.boomerang.position >= this.enemy.position - 1) {
       this.hero.boomerang.hitEnemy = true;
       this.enemy.die();
+      this.score += 1;
       this.enemy = new Enemy();
     } else {
       this.enemy.moveLeft();
