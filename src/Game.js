@@ -13,10 +13,9 @@ const controlHero = require('./keyboard')
 class Game {
   constructor({ trackLength }) {
     this.trackLength = trackLength;
-    this.hero = new Hero({position: 0}); // Герою можно аргументом передать бумеранг.
+    this.hero = new Hero({position: 0, boomerang: new Boomerang()}); // Герою можно аргументом передать бумеранг.
     this.enemy = new Enemy();
     this.view = new View();
-    this.boomerang = new Boomerang();
     this.track = [];
     this.regenerateTrack();
   }
@@ -27,6 +26,7 @@ class Game {
     this.track = (new Array(this.trackLength)).fill(' ');
     this.track[this.hero.position] = this.hero.skin;
     this.track[this.enemy.position] = this.enemy.skin;
+    this.track[this.hero.boomerang.position] = this.hero.boomerang.skin;
   }
 
 
