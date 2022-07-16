@@ -11,6 +11,10 @@ class Enemy {
     this.skin = skins[Math.floor(Math.random() * skins.length)];
   }
 
+  run(){
+    
+  }
+
   moveLeft() {
     // Идём влево.
     this.position -= 1;
