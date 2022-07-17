@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     username: { allowNull: false, type: DataTypes.TEXT },
-    score: { allowNull: false, type: DataTypes.INTEGER },
+    highScore: { allowNull: false, type: DataTypes.INTEGER },
     createdAt: { allowNull: false, type: DataTypes.DATE },
     updatedAt: { allowNull: false, type: DataTypes.DATE }
   }, {
