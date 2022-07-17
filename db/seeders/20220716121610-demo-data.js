@@ -2,9 +2,9 @@ module.exports = {
   async up(queryInterface) {
     const usersName = ['Elijah', 'Emma'];
 
-    const users = usersName.map((name) => ({
+    const users = usersName.map((name, i) => ({
       username: name,
-      score: 0,
+      highScore: i,
       createdAt: new Date(),
       updatedAt: new Date(),
     }))

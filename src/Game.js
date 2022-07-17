@@ -68,7 +68,7 @@ class Game {
       this.check(name);
       this.checkEnemy();
       this.regenerateTrack();
-      this.view.render(this.track);
+      this.view.render(this.track, name, this.score);
     }, 200);
   }
 }
