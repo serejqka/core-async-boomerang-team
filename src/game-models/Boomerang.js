@@ -4,13 +4,22 @@
 
 class Boomerang {
   constructor() {
-    this.skin = '🌀';
-    this.position = 0;
+    this.generateSkin();
+    this.position;
+    this.hitEnemy = false;
+  }
+
+  generateSkin() {
+    const skins = ['⌨️', '🖱️', '💽', '💾', '💿', '🖨️', '🖥️', '💻', '🔌'];
+    this.skin = skins[Math.floor(Math.random() * skins.length)];
   }
 
   fly() {
-    this.moveRight();
-    this.moveLeft();
+    if (!this.hitEnemy) {
+      this.moveRight();
+    } else {
+      this.moveLeft();
+    }
   }
 
   moveLeft() {

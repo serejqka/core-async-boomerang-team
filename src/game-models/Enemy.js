@@ -3,11 +3,11 @@
 class Enemy {
   constructor() {
     this.generateSkin();
-    this.position = 2;
+    this.position = 29;
   }
 
   generateSkin() {
-    const skins = ['👾', '💀', '👹', '👻', '👽', '👿', '💩', '🤡', '🤺', '🧛', '🧟', '🎃'];
+    const skins = ['🪳', '🪲', '🐜', '🐛', '🐞'];
     this.skin = skins[Math.floor(Math.random() * skins.length)];
   }
 
