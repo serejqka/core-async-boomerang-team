@@ -7,6 +7,7 @@ const Boomerang = require('./game-models/Boomerang');
 const View = require('./View');
 const controlHero = require('./keyboard')
 const { userName } = require('./DataBase')
+const player = require('play-sound')(opts = {});
 // const {
 //   sequelize,
 //   User
@@ -29,6 +30,7 @@ class Game {
     this.view = new View();
     this.track = [];
     this.score = 0;
+    this.player = player;
     this.regenerateTrack();
   }
 
@@ -43,6 +45,7 @@ class Game {
 
   check(name) {
     if (this.enemy.position === this.hero.position + 1) {
+      this.player.play('./src/sounds/hold-your-horses.wav');
       this.hero.die();
       this.regenerateTrack();
       this.view.render(this.track);
@@ -53,6 +56,7 @@ class Game {
   checkEnemy() {
     if (this.hero.boomerang.position >= this.enemy.position - 1) {
       this.hero.boomerang.hitEnemy = true;
+      this.player.play('./src/sounds/congratulations.wav');
       this.enemy.die();
       this.score += 1;
       this.enemy = new Enemy();
